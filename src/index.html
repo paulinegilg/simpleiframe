@@ -1,0 +1,199 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>simpleiframe.js ✨</title>
+    <link href="assets/scss/main.scss" rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <!-- header -->
+
+        <header>
+            <h1 class="mt-5 text-center">simpleiframe.js ✨ <span class="badge bg-secondary">Bêta</span></h1>
+            <p class="lead text-center m-4">Bienvenue 👋 Remplissez le formulaire et générez un code prêt à intégrer,
+                responsive et conforme au RPGD grâce à tarteaucitron.js 🍋</p>
+        </header>
+
+        <main>
+
+            <!-- form -->
+            <form id="form">
+
+                <!-- select content type -->
+                <label for="content-type" class="form-label mt-3">Type de vidéo (obligatoire)</label>
+                <select id="content-type" class="form-select mb-2" aria-label="" required>
+                    <option value="" selected>Choisissez le type de contenu</option>
+                    <option value="youtube">Vidéo YouTube</option>
+                    <option value="dailymotion">Vidéo Dailymotion</option>
+                    <option value="vimeo">Vidéo Vimeo</option>
+                    <option value="creacast">Vidéo Creacast</option>
+                </select>
+
+                <!-- input content url -->
+                <div class="content-url">
+
+                    <label for="content-url" class="form-label mt-3">URL de la vidéo (obligatoire)</label>
+                    <input id="content-url" class="form-control mb-2" type="text"
+                        placeholder="Saisissez l'URL de la vidéo" aria-label="" required>
+
+                    <button type="button" class="btn btn-outline-secondary btn-sm mb-2" id="open-help">Ouvrir
+                        l'aide</button>
+                    <button type="button" class="btn btn-outline-secondary btn-sm mb-2" id="close-help">Fermer
+                        l'aide</button>
+
+                    <p id="open-help-error" hidden>Veillez d'abord sélectionner un type de vidéo 👆</p>
+
+                    <!-- youtube infos -->
+                    <div class="form-info content-infos p-3" id="youtube-content-infos" hidden>
+                        <p class="form-info-subtitle"><strong>Pour récupérer la bonne URL, ouvrez la vidéo sur YouTube.
+                                Puis :</strong></p>
+                        <div class="row">
+                            <div class="col">
+                                <p>1. Cliquez sur "Partager".</p>
+                                <img class="img-thumbnail" src="assets/img/youtube-info-1.jpg">
+                            </div>
+                            <div class="col">
+                                <p>2. Cliquez sur "Copier" pour récupérer l'URL.</p>
+                                <img class="img-thumbnail" src="assets/img/youtube-info-2.jpg">
+                            </div>
+                            <div class="col">
+                                <p>3. Collez l'URL dans le champ du formulaire ci-dessus 😉</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- dailymotion infos -->
+                    <div class="form-info content-infos p-3" id="dailymotion-content-infos" hidden>
+                        <p class="form-info-subtitle"><strong>Pour récupérer la bonne URL, ouvrez la vidéo sur
+                                Dailymotion. Puis :</strong></p>
+                        <div class="row">
+                            <div class="col">
+                                <p>1. Cliquez sur l'icone en forme d'avion en papier.</p>
+                                <img class="img-thumbnail" src="assets/img/dailymotion-info-1.jpg">
+                            </div>
+                            <div class="col">
+                                <p>2. Cliquez sur "Copy link" pour récupérer l'URL.</p>
+                                <img class="img-thumbnail" src="assets/img/dailymotion-info-2.jpg">
+                            </div>
+                            <div class="col">
+                                <p>3. Collez l'URL dans le champ du formulaire ci-dessus 😉</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- vimeo infos -->
+                    <div class="form-info content-infos p-3" id="vimeo-content-infos" hidden>
+                        <p class="form-info-subtitle"><strong>Pour récupérer la bonne URL, ouvrez la vidéo sur Vimeo.
+                                Puis :</strong></p>
+                        <div class="row">
+                            <div class="col">
+                                <p>1. Cliquez sur "Partager" au bas de la vidéo.</p>
+                                <img class="img-thumbnail" src="assets/img/vimeo-info-1.jpg">
+                            </div>
+                            <div class="col">
+                                <p>2. Récupérez l'URL sous "Lien".</p>
+                                <img class="img-thumbnail" src="assets/img/vimeo-info-2.jpg">
+                            </div>
+                            <div class="col">
+                                <p>3. Collez l'URL dans le champ du formulaire ci-dessus 😉</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- creacast infos -->
+                    <div class="form-info content-infos p-3" id="creacast-content-infos" hidden>
+                        <p class="form-info-subtitle"><strong>Pour récupérer la bonne URL, utilisez l'iframe fournie par
+                                le prestataire.</strong></p>
+                        <div class="row">
+                            <div class="col">
+                                <p>1. Sélectionnez l'URL contenue dans l'attribut "src" et copiez.</p>
+                                <p>L'URL devrait être de la forme <em>https://www.creacast.com/nom-de-la-video</em>.</p>
+                            </div>
+                            <div class="col">
+                                <p>2. Collez l'URL dans le champ du formulaire ci-dessus 😉</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- input content title -->
+                <label for="content-title" class="form-label mt-3">Titre de la vidéo (obligatoire)</label>
+                <input id="content-title" class="form-control mb-2" type="text" placeholder="Saisissez un titre"
+                    aria-label="" required>
+
+                <!-- select content size -->
+                <label for="content-size" class="form-label mt-3">Taille de la vidéo (obligatoire)</label>
+                <select id="content-size" class="form-select mb-2" aria-label="" required>
+                    <option value="" selected>Choisissez la taille de la vidéo</option>
+                    <option value="360">Petite</option>
+                    <option value="720">Moyenne</option>
+                    <option value="1200">Grande</option>
+                </select>
+
+                <!-- content alignment / center yes - no -->
+                <div class="form-check form-switch mt-3 mb-2">
+                    <input class="form-check-input" type="checkbox" role="switch" id="content-center">
+                    <label class="form-check-label" for="contentCenter">Centrer la vidéo</label>
+                </div>
+
+                <!-- submit -->
+                <button class="btn btn-primary mt-3 mb-2" id="generate-button" type="submit">Générer le code 🚀</button>
+
+                <!-- clear all data -->
+                <button class="btn btn-secondary mt-3 mb-2" id="clear-button" type="submit">Réinitialiser le formulaire
+                </button>
+
+            </form>
+
+            <!-- Result -->
+            <div class="result p-3 mt-4" id="result" hidden>
+                <h2 class="text-center mt-2 mb-3">Votre code ✨</h2>
+                <div class="result-display p-3 position-relative">
+                    <button type="button" id="copy-btn" class="btn btn-outline-light btn-sm mb-2 position-absolute">Copier</button>
+                    <code id="code" class="mt-5"></code>
+                </div>
+                <!-- Content preview -->
+                <h2 class="text-center mt-3 mb-3">Aperçu de la vidéo 👀</h2>
+                <div id="preview"></div>
+            </div>
+
+        </main>
+
+        <footer class="m-3">
+            <p class="text-center mt-5">Ce projet est actuellement en version <span class="badge bg-secondary">bêta</span>. N'hésitez pas à suggérer des améliorations ! 😊</p>
+
+            <div class="row justify-content-md-center">
+                <div class="col-md-auto">
+                    <a href="">GitHub issues</a>
+                </div>
+                <div class="col-md-auto">
+                    <a href="mailto:gilgpauline@gmail.com">Mail</a>
+                </div>
+            </div>
+
+            <div class="legal row justify-content-md-center mt-5 mb-1">
+                <div class="col-md-auto">
+                    <a href="#">Mentions légales</a>
+                </div>
+                <div class="col-md-auto">
+                    <a href="#">Cookies 🍪</a>
+                </div>
+            </div>
+
+            <p class="copyright text-center">Développé par <a href="https://paulinegilg.eu/" target="_blank">Pauline Gilg</a></p>
+        
+        </footer>
+    </div>
+
+    <script type="script" src="assets/js/main.js"></script>
+
+</body>
+
+</html>
